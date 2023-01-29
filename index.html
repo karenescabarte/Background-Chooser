@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Background Chooser</title>
+
+		<!-- Jquery CDN -->
+		<script
+			src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.min.js"
+			integrity="sha512-STof4xm1wgkfm7heWqFJVn58Hm3EtS31XFaagaa8VMReCXAkQnJZ+jEy8PCC/iT18dFy95WcExNHFTqLyp72eQ=="
+			crossorigin="anonymous"
+			referrerpolicy="no-referrer"
+		></script>
+
+		<script type="text/javascript" defer async>
+			$(document).ready(function () {
+				$("#main_box").click(function () {
+					// alert("You clicked main box!");
+					$(this).children().css("border", "0");
+					$(this).children().css("color", "transparent");
+					$(this).children().css("border-style", "none");
+					$(this).css("background-image", "none");
+				});
+				$(".mini-boxes").click(function () {
+					var chooseBg = $(this).attr("src");
+					console.log(chooseBg);
+					// alert("You clicked a mini Box!");
+					$(this).css("color", "#FFFF00");
+					$(this).css("border", "5px");
+					$(this).css("border-style", "solid");
+					$(this).siblings().css("color", "transparent");
+					$(this).siblings().css("border", "0");
+					$(this).siblings().css("border-style", "none");
+					$(this)
+						.parent("#main_box")
+						.css("background-image", "url(" + chooseBg + ")");
+					event.stopPropagation();
+				});
+			});
+		</script>
+
+		<style>
+			#main_box {
+				background-image: url("img/bg1.gif");
+				background-color: lightgray;
+				background-repeat: no-repeat;
+				background-size: cover;
+				padding: 30px;
+			}
+			#main_box img {
+				display: block;
+				width: 200px;
+				height: 100px;
+				margin: 10px 0 25px 10px;
+				background-image: url("img/bg1.gif");
+				/* border: 10px solid yellow; */
+			}
+			h1 {
+				text-align: center;
+				margin: 30px;
+				font-family: Verdana, Geneva, Tahoma, sans-serif;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Background Chooser</h1>
+		<div id="main_box">
+			<img src="img/bg1.gif" alt="background-1" class="mini-boxes" />
+			<img src="img/bg2.gif" alt="background-2" class="mini-boxes" />
+			<img src="img/bg3.gif" alt="background-3" class="mini-boxes" />
+			<img src="img/bg4.gif" alt="background-4" class="mini-boxes" />
+		</div>
+	</body>
+</html>
